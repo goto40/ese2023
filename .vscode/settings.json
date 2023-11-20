@@ -1,0 +1,9 @@
+{
+    "task.allowAutomaticTasks": "on",
+    "editor.defaultFormatter":"xaver.clang-format",
+    "editor.formatOnSave": true,
+    "cSpell.language": "en,de-DE",
+    "cSpell.words": [
+        "Ausleitungen"
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "$id": "http://example.com/schemas/defs.json",
+    "$defs": {
+        "MyObj1": {
+            "type": "object",
+            "description": "MyObj1 information",
+            "properties": {
+              "s": {"type": "string", "description": "s information" },
+              "i": {"type": "integer"},
+              "f": {"type": "number"}
+            },
+            "additionalProperties": false,
+            "required": ["s","i","f"]
+        },
+        "MyObj2": {
+            "type": "object",
+            "properties": {
+                "b": {"type": "boolean"},
+                "s": {"type": "string"},
+                "i8": {"type": "integer", "minimum": -128, "maximum": 127},
+                "i16a": {"type": "integer", "minimum": -129, "maximum": 127},
+                "i16b": {"type": "integer", "minimum": -128, "maximum": 128},
+                "i16": {"type": "integer", "minimum": -12, "maximum": 5000},
+                "u16": {"type": "integer", "minimum": 12, "maximum": 5000},
+                "u32": {"type": "integer", "minimum": 12, "maximum": 500000},
+                "f": {"type": "number", "maximum": 12},
+                "o": {"$ref": "#/$defs/MyObj1", "description": "information for a ref!" },
+                "e": {"$ref": "#/$defs/MyEnum1"},
+                "a1": {
+                    "type": "array",
+                    "items": { "type": "integer", "minimum": 0, "maximum": 65535 }
+                },
+                "a2": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "maxItems": 10
+                },
+                "a3": {
+                    "type": "array",
+                    "items": { "$ref": "#/$defs/MyEnum1" },
+                    "minItems": 10,
+                    "maxItems": 10
+                },
+                "a4": {
+                    "type": "array",
+                    "items": { "$ref": "#/$defs/MyObj1" },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "additionalProperties": false,
+            "required": ["b","s","i8","i16a","i16b","i16","u16","u32","f","o","e","a1","a2","a3","a4"]
+        },
+        "MyEnum1": {
+            "enum": ["a", "b", "c"]
+        }
+    }
+}

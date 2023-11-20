@@ -1,0 +1,25 @@
+{
+    "$id": "http://fruits.json",
+    "$defs": {
+        "Apple": {
+            "type": "object",
+            "properties": {
+              "color": {"$ref": "#/$defs/Color"},
+              "size_cm": {"type": "number"}
+            },
+            "additionalProperties": false,
+            "required": ["color", "size_cm"]
+        },
+        "Color": {
+            "enum": ["red", "green", "yellow"]
+        },
+        "Basket": {
+            "type": "object",
+            "properties": {
+                "apples": { "type": "array", "items": { "$ref": "#/$defs/Apple" } }
+            },
+            "additionalProperties": false,
+            "required": ["apples"]
+        }
+    }
+}

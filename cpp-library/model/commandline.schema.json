@@ -1,0 +1,20 @@
+{
+    "$id": "http://commandline.json",
+    "$defs": {
+        "Color": {
+            "enum": ["red", "green", "yellow"]
+        },
+        "CommandlineApp": {
+            "type": "object",
+            "description": "This is a cool commandline application",
+            "properties": {
+                "color": {"$ref": "#/$defs/Color", "description": "color information"},
+                "n": { "type": "integer", "minimum": 0, "description": "integral information" },
+                "data": { "type": "array", "items" :{ "type": "number"}, "description": "array of numbers" },
+                "switches": { "type": "array", "items" :{ "type": "boolean"}, "description": "array of booleans" }
+            },
+            "additionalProperties": false,
+            "required": ["color", "data","n","switches"]
+        }
+    }
+}

@@ -1,0 +1,21 @@
+// fastddsgen -replace HelloWorld.idl
+
+module dds_examples {
+
+struct SimpleT
+{
+    long long j;
+    long long i;
+    double f;
+};
+
+typedef SimpleT SimpleArray3T[3];
+
+struct ComplexT
+{
+    SimpleT s;
+    SimpleArray3T a;
+
+};
+
+};

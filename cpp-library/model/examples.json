@@ -1,0 +1,121 @@
+{
+    "$id": "http://example.com/schemas/examples.json",
+    "$defs": {
+        "MyObj1": {
+            "type": "object",
+            "properties": {
+              "s": {"type": "string"},
+              "i": {"type": "integer"},
+              "f": {"type": "number"}
+            },
+            "additionalProperties": false,
+            "required": ["s","i","f"]
+        },
+        "MyObj2": {
+            "type": "object",
+            "properties": {
+              "s": {"type": "string"},
+              "i": {"type": "integer"},
+              "f": {"type": "number"},
+              "x": {"type": "number"}
+            },
+            "additionalProperties": false,
+            "required": ["s", "i", "f", "x"]
+        },
+        "MyObj1Complex": {
+          "type": "object",
+          "properties": {
+            "s": {"type": "string"},
+            "o": {"$ref": "#/$defs/MyObj1"}
+          },
+          "additionalProperties": false,
+          "required": ["s","o"]
+      },
+      "Simple": {
+          "type": "object",
+          "properties": {
+            "j": {"type": "integer"},
+            "i": {"type": "integer"},
+            "f": {"type": "number"}
+          },
+          "additionalProperties": false,
+          "required": ["j","i","f"]
+        },
+        "Complex": {
+          "type": "object",
+          "properties": {
+            "s": {"$ref": "#/$defs/Simple"},
+            "a": {
+              "type": "array",
+              "items": {"$ref": "#/$defs/Simple"},
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "additionalProperties": false,
+          "required": ["s","a"]
+        },
+        "Complex4": {
+          "type": "object",
+          "properties": {
+            "s": {"$ref": "#/$defs/Simple"},
+            "a": {
+              "type": "array",
+              "items": {"$ref": "#/$defs/Simple"},
+              "minItems": 4,
+              "maxItems": 4
+            }
+          },
+          "additionalProperties": false,
+          "required": ["s","a"]
+        },
+        "ComplexD": {
+          "type": "object",
+          "properties": {
+            "s": {"$ref": "#/$defs/Simple"},
+            "a": {
+              "type": "array",
+              "items": {"$ref": "#/$defs/Simple"}
+            }
+          },
+          "additionalProperties": false,
+          "required": ["s","a"]
+        },
+        "Color": {
+          "enum": [ "BLUE", "RED", "GREEN" ]
+        },
+        "Payload": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "integer", "minimum": 0},
+            "color": { "$ref": "#/$defs/Color"}
+          },
+          "additionalProperties": false,
+          "required": ["id","color"]
+        },
+        "HelloWorld": {
+          "type": "object",
+          "properties": {
+            "header": { "$ref": "#/$defs/Payload"},
+            "id": { "type": "integer", "minimum": 0},
+            "index": { "type": "integer", "minimum": 0},
+            "message": { "type": "string"},
+            "color": { "$ref": "#/$defs/Color"},
+            "colors": {
+              "type": "array",
+              "items": {"$ref": "#/$defs/Color"}
+            },
+            "values": {
+              "type": "array",
+              "items": { "type": "integer"}
+            },
+            "arrayOfStructs": {
+              "type": "array",
+              "items": {"$ref": "#/$defs/Payload"}
+            }
+          },
+          "additionalProperties": false,
+          "required": ["header", "id","index","message","color","colors","values","arrayOfStructs"]
+        }
+    }
+}

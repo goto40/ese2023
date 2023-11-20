@@ -1,0 +1,35 @@
+// fastddsgen -replace HelloWorld.idl
+
+module dds_examples {
+
+enum ColorT
+{
+    RED,
+    GREEN,
+    BLUE
+};
+typedef sequence<ColorT> ColorSequenceT;
+typedef long long ThreeValuesT[3];
+
+struct PayloadT
+{
+    unsigned long long id;
+    ColorT color;
+};
+
+typedef sequence<PayloadT> PayloadSequenceT;
+
+struct HelloWorldT
+{
+    @key unsigned long long id;
+    PayloadT header;
+    unsigned long long index;
+    string message;
+    ColorT color;
+    ColorSequenceT colors;
+    ThreeValuesT values;
+    PayloadSequenceT arrayOfStructs;
+
+};
+
+};

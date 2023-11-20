@@ -1,0 +1,5 @@
+node_mdoules
+out
+dist
+tsconfig.tsbuildinfo
+src-gen

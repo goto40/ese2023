@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package grpc_examples;
+
+enum Color {
+  RED = 0;
+  GREEN = 1;
+  BLUE = 2;
+}
+
+message Payload {
+  uint64 id = 1;
+  Color color = 2;
+}
+
+message HelloWorld {
+  uint64 id = 1;
+  Payload header = 2;
+  uint64 index = 3;
+  string message = 4;
+  Color color = 5;
+  repeated Color colors = 6;
+  repeated uint64 values = 7;
+  repeated Payload arrayOfStructs = 8;
+}

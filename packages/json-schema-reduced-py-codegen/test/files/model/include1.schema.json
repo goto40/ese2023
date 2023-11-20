@@ -1,0 +1,15 @@
+{
+    "$id": "http://example.com/include1.schema.json",
+    "$defs": {
+        "MyObj1": {
+            "type": "object",
+            "properties": {
+              "s": {"type": "string"},
+              "i": {"type": "integer"},
+              "o": {"$ref": "http://example.com/include2.schema.json#/$defs/MyObj2"}
+            },
+            "additionalProperties": false,
+            "required": ["s","i","o"]
+        }
+    }
+}

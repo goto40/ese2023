@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  workspace:
+    image: workspace
+    container_name: workspace
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
+  broker:
+    image: eclipse-mosquitto:2.0.15
+    volumes:
+      - .mosquitto/config:/mosquitto/config:ro
+    ports:
+      - "1883:1883"
+      - "9001:9001" 
+    expose:
+      - "1883"
+      - "9001" 

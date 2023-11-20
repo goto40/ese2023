@@ -1,0 +1,129 @@
+{
+    "tasks": [
+        {
+            "label": "startup",
+            "type": "shell",
+            "command": "npm ci",
+            "windows": {
+                "command": "npm ci"
+            },
+            "presentation": {
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "close": true
+            }
+        },
+        {
+            "label": "startup",
+            "type": "shell",
+            "command": "pre-commit install",
+            "windows": {
+                "command": "pre-commit install"
+            },
+            "presentation": {
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "close": true
+            }
+        },
+        {
+            "label": "w: lib",
+            "type": "shell",
+            "command": "cd packages/json-schema-reduced && npm run watch",
+            "windows": {
+                "command": "cd packages/json-schema-reduced && npm run watch"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+        {
+            "label": "t: lib",
+            "type": "shell",
+            "command": "cd packages/json-schema-reduced && npm run test",
+            "windows": {
+                "command": "cd packages/json-schema-reduced && npm run test"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+        {
+            "label": "w: cpp",
+            "type": "shell",
+            "command": "cd packages/json-schema-reduced-cpp-codegen && npm run watch",
+            "windows": {
+                "command": "cd packages/json-schema-reduced-cpp-codegen && npm run watch"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+        {
+            "label": "t: cpp",
+            "type": "shell",
+            "command": "cd packages/json-schema-reduced-cpp-codegen && npm run test",
+            "windows": {
+                "command": "cd packages/json-schema-reduced-cpp-codegen && npm run test"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+        {
+            "label": "w: py",
+            "type": "shell",
+            "command": "cd packages/json-schema-reduced-py-codegen && npm run watch",
+            "windows": {
+                "command": "cd packages/json-schema-reduced-py-codegen && npm run watch"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+        {
+            "label": "t: py",
+            "type": "shell",
+            "command": "cd packages/json-schema-reduced-py-codegen && npm run test",
+            "windows": {
+                "command": "cd packages/json-schema-reduced-py-codegen && npm run test"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "isBackground": true
+        },
+        {
+            "label": "spawn_tasks",
+            "dependsOrder": "parallel",
+            "dependsOn": [
+                "w: lib",
+                "t: lib",
+                "w: cpp",
+                "t: cpp",
+                "w: py",
+                "t: py"
+            ]
+        },
+        {
+            "label": "autoexec.bat",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "startup",
+                "spawn_tasks"
+            ],
+            "runOptions": { "runOn": "folderOpen" }
+        }
+    ]
+}

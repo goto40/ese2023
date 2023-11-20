@@ -1,0 +1,120 @@
+{
+    "description": "Reduced JSON Schema with structs, enums, string, numbers and array",
+  
+    "type": "object",
+    "properties": {
+        "$schema": { "type": "string" },
+        "$id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "$defs": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z]\\w*$": {
+                    "oneOf": [
+                        { "$ref": "#/$defs/struct" },
+                        { "$ref": "#/$defs/enum" }
+                    ]
+                }
+            }
+        }
+    },
+    "required": ["$defs"],
+    "additionalProperties": false,
+    "$defs": {
+        "rawType": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "description": { "type": "string" },
+                        "type": { "enum": ["string", "boolean"] }
+                    },
+                    "required": ["type"],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "description": { "type": "string" },
+                        "type": { "enum": ["integer"] },
+                        "minimum": { "type": "integer" },
+                        "maximum": { "type": "integer" }
+                    },
+                    "required": ["type"],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "description": { "type": "string" },
+                        "type": { "enum": ["number"] },
+                        "minimum": { "type": "number" },
+                        "maximum": { "type": "number" }
+                    },
+                    "required": ["type"],
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "ref": {
+            "type": "object",
+            "properties": {
+                "description": { "type": "string" },
+                "$ref": { "type": "string" }
+            },
+            "required": ["$ref"],
+            "additionalProperties": false
+        },
+        "enum": {
+            "type": "object",
+            "properties": {
+                "enum": { "type": "array", "items": {"type": "string"}, "uniqueItems": true }
+            },
+            "required": ["enum"],
+            "additionalProperties": false
+        },
+        "arrayType": {
+            "type": "object",
+            "description": { "type": "string" },
+            "properties": {
+                "type": { "enum": ["array"] },
+                "items": {
+                    "oneOf": [
+                        { "$ref": "#/$defs/rawType" },
+                        { "$ref": "#/$defs/ref" }
+                    ]
+                },
+                "minItems": { "type": "number" },
+                "maxItems": { "type": "number" }
+            },
+            "required": ["type", "items"]
+        },
+        "struct": {
+            "type": "object",
+            "properties": {
+                "type": { "enum": ["object"] },
+                "description": { "type": "string" },
+                "properties": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^[a-zA-Z]\\w*$": {
+                            "oneOf": [
+                                { "$ref": "#/$defs/rawType" },
+                                { "$ref": "#/$defs/arrayType" },
+                                { "$ref": "#/$defs/ref" }
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": { "enum": [false] },
+                "required": { 
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
+            },
+            "required": ["type", "properties","additionalProperties"],
+            "additionalProperties": false
+        }
+    }
+}

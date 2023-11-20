@@ -1,0 +1,41 @@
+{
+  "name": "@ese/json-schema-reduced-cpp-codegen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -b src/tsconfig.json",
+    "watch": "tsc -b src/tsconfig.json --watch",
+    "lint": "eslint src test --ext .ts",
+    "test": "vitest",
+    "update-reference": "shx rm -rf test/files/reference/* && node bin/cli test/files/model/*json -d test/files/reference/"
+  },
+  "bin": {
+    "json-schema-reduced-cpp-codegen": "bin/cli"
+  },
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "@types/jest": "^29.0.3",
+    "@types/jest-expect-message": "^1.0.4",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "@vitest/coverage-c8": "^0.23.2",
+    "@vitest/ui": "^0.23.4",
+    "dedent": "^0.7.0",
+    "eslint": "^8.17.0",
+    "eslint-plugin-header": "^3.1.1",
+    "shx": "^0.3.4",
+    "ts-dedent": "^2.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2",
+    "vitest": "^0.23.2"
+  },
+  "dependencies": {
+    "@ese/json-schema-reduced": "*",
+    "chalk": "^4.1.2",
+    "commander": "^10.0.0",
+    "glob": "^9.3.2"
+  },
+  "license": "MIT"
+}

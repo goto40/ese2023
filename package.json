@@ -1,0 +1,20 @@
+{
+  "name": "ese",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npm run build -ws",
+    "test": "npm run test -ws -- --run && ./run-non-node-tests.sh",
+    "update-reference": "npm run update-reference -ws",
+    "clean-all": "rm -rf cpp-library/build && rm -rf python-library/venv && rm -rf $(find . -type d -name node_modules)"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "workspaces": [
+    "packages/json-schema-reduced",
+    "packages/json-schema-reduced-cpp-codegen",
+    "packages/json-schema-reduced-py-codegen"
+  ]
+}
