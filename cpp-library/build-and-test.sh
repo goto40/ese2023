@@ -13,6 +13,7 @@ done
 
 # generate code for proto files (under version control)
 pushd examples/grpc/model
+chmod a+x ../../../../protoc-meta-plugin.py
 protoc --plugin=protoc-gen-meta-plugin=../../../../protoc-meta-plugin.py --meta-plugin_out=../src/ --cpp_out=../src/ -I=./ *.proto
 popd
 
