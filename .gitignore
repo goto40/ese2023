@@ -11,3 +11,15 @@ Testing/Temporary/*
 *.pb.*
 core.*
 convert_helper.s
+cpp-library/examples/fastdds/src/dds_examples/HelloWorldCdrAux.hpp
+cpp-library/examples/fastdds/src/dds_examples/HelloWorld.cxx
+cpp-library/examples/fastdds/src/dds_examples/HelloWorld.h
+cpp-library/examples/fastdds/src/dds_examples/HelloWorldCdrAux.ipp
+cpp-library/examples/fastdds/src/dds_examples/HelloWorldPubSubTypes.cxx
+cpp-library/examples/fastdds/src/dds_examples/HelloWorldPubSubTypes.h
+cpp-library/examples/fastdds/src/dds_examples/Simple.cxx
+cpp-library/examples/fastdds/src/dds_examples/Simple.h
+cpp-library/examples/fastdds/src/dds_examples/SimpleCdrAux.hpp
+cpp-library/examples/fastdds/src/dds_examples/SimpleCdrAux.ipp
+cpp-library/examples/fastdds/src/dds_examples/SimplePubSubTypes.cxx
+cpp-library/examples/fastdds/src/dds_examples/SimplePubSubTypes.h
