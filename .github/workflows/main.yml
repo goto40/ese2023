@@ -2,8 +2,6 @@ name: 'build-amd-test'
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
-    branches:
-      - main
 
 jobs:
   build:
@@ -17,4 +15,4 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           # Change this to be your CI task/script
-          runCmd: npm run build && npm run test
+          runCmd: npm ci && npm run build && npm run test

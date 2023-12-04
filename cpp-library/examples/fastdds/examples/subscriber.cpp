@@ -18,6 +18,7 @@
 #include <fastdds/dds/subscriber/qos/DataReaderQos.hpp>
 #include <fastdds/dds/subscriber/qos/SubscriberQos.hpp>
 #include <fastdds/dds/topic/TypeSupport.hpp>
+#include <thread>
 
 #include "dds_examples/HelloWorld.h"
 #include "dds_examples/HelloWorldPubSubTypes.h"

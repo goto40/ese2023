@@ -38,6 +38,7 @@ See [Dockerfile](./.devcontainer/Dockerfile):
 * [Fast-DDS](https://github.com/eProsima/Fast-DDS) for the C++ examples using DDS.
 * [Mosquitto Broker](https://mosquitto.org/) and [Paho (C++)](https://github.com/eclipse/paho.mqtt.cpp) for the MQTT examples.
 * C++ Compiler, Cmake etc. (details see [Dockerfile](./.devcontainer/Dockerfile)).
+* ... (not all depedencies are required if you do not compile all examples: just edit the CMakeLists.txt files and exclude subdirectories)
 
 ## Quick test (build + run tests)
 
